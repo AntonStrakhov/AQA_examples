@@ -19,10 +19,11 @@ public class TextBoxTests {
     }
 
     @Test
-    void fillFormTest() {
+    void fillFormTest() throws InterruptedException {
         String userName = "Alex Egorov";
 
         open("/text-box");
+        Thread.sleep(Long.parseLong("30000"));
         $(".text-center").shouldHave(text("Text Box"));
 
         $("#userName").setValue(userName);
