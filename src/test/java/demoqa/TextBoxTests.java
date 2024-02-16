@@ -15,10 +15,11 @@ public class TextBoxTests {
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager";
     }
 
     @Test
-    void fillFormTest() throws InterruptedException {
+    void fillFormTest() {
         String userName = "Alex Egorov";
 
         open("/text-box");
