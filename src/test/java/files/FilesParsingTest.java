@@ -72,8 +72,8 @@ public class FilesParsingTest {
         ) {
             JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
             assertThat(jsonObject.get("title").getAsString()).isEqualTo("example glossary");
-            assertThat(jsonObject.get("gloss_div").getAsJsonObject().get("title").getAsString()).isEqualTo("S");
-            assertThat(jsonObject.get("gloss_div").getAsJsonObject().get("flag").getAsBoolean()).isTrue();
+            assertThat(jsonObject.get("Gloss_div").getAsJsonObject().get("title").getAsString()).isEqualTo("S");
+            assertThat(jsonObject.get("Gloss_div").getAsJsonObject().get("flag").getAsBoolean()).isTrue();
         }
     }
 

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Glossary {
     public String title;
-    @SerializedName("gloss_div")
+    @SerializedName("Gloss_div")
     public GlossDiv glossDiv;
 
     public static class GlossDiv {
