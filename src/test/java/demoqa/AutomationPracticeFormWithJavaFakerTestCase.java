@@ -22,7 +22,7 @@ public class AutomationPracticeFormWithJavaFakerTestCase extends TestBase {
         String userFirstname = faker.name().firstName();
         String userSurname = faker.name().lastName();
         String userEmail = faker.internet().emailAddress();
-        String userNumber = "9999999999";
+        String userNumber = faker.number().digits(10);
         String gender = "Male";
         String dayOfBirth = "12";
         String monthOfBirth = "September";
