@@ -41,3 +41,10 @@ dependencies {
 gradle :allureReport --clean
 
 SelenideLogger.addListener("allure", new AllureSelenide());
+
+****** CI GITHUB
+1. Добавляем в build.gradle
+test {
+    systemProperties(System.getProperties())
+}
+2. Добавить файл .github/workflows/test.yaml
