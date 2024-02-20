@@ -48,3 +48,6 @@ test {
     systemProperties(System.getProperties())
 }
 2. Добавить файл .github/workflows/test.yaml
+3. Отправить изменения в репозиторий
+4. В репозитории во вклдаке Actions запстить тесты через CI
+5. Далее перейти в Setting - Pages
