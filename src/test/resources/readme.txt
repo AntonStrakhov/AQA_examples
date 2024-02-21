@@ -51,3 +51,7 @@ test {
 3. Отправить изменения в репозиторий
 4. В репозитории во вклдаке Actions запустить тесты через CI
 5. Далее перейти в Setting - Pages
+Source - Deploy from branch
+Branch - main / root
+6. Setting - Action - General
+Workflow permisson - read and write
