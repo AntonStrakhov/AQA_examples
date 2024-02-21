@@ -19,7 +19,7 @@ jobs:
       # добавляем chmod
       - run: chmod +x ./gradlew
       # запускаем тесты
-      - run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub --alluredir=allure-results
+      - run: ./gradlew clean test -Dselenide.remote=http://localhost:4444/wd/hub
       - name: Store allure results
         uses: actions/upload-artifact@v3
         with:
