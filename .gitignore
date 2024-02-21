@@ -40,3 +40,6 @@ target/
 .vscode
 /gradlew
 /gradlew.bat
+
+# Don't ignore
+!example.zip
