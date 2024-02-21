@@ -48,6 +48,8 @@ test {
     systemProperties(System.getProperties())
 }
 2. Добавить файл .github/workflows/test.yaml
+on: workflow_dispatch //ручной запуск тестов
+on [push] //запуск тестов при пуше
 3. Отправить изменения в репозиторий
 4. В репозитории во вклдаке Actions запустить тесты через CI
 5. Далее перейти в Setting - Pages
