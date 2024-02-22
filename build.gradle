@@ -51,3 +51,9 @@ task files_test(type: Test) {
         includeTags("files")
     }
 }
+
+task remote_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("remote")
+    }
+}

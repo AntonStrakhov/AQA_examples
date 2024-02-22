@@ -68,3 +68,22 @@ Branches to build - */main (ветка из которой запускаем т
 Build Invoke Gradle Gradle 7.4.1
 Tasks clean files_test (files_test - название задачи в файле build.gradle)
 Post-build Actions - Allure Report - build/allure-results (путь до папки allure-results, можно посмотреть в папке Workspace)
+
+********* Удаленный запуск на Selenoid
+1. Добавляем свойства
+    @BeforeAll
+    static void beforeAll() {
+        Configuration.browserSize = "1920x1080";
+        Configuration.browser = "chrome";
+        Configuration.browserVersion = "100.0";
+        Configuration.baseUrl = "https://demoqa.com";
+        // для запуска тестов на удаленном сервере селенид
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        // добавялем опции для запуска браузера в окошке селеноида и запись видео
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
+    }
