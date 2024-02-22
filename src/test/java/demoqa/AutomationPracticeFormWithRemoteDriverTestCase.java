@@ -57,8 +57,10 @@ public class AutomationPracticeFormWithRemoteDriverTestCase{
         String subject = "Maths";
 
         registrationPage.openPage();
-        //Строка ниже нужна для запуска на Selenoid, на Jenkins не нужна
+        //Строка ниже нужна для запуска на Selenoid
         //$(byText("Соглашаюсь")).click();
+        //Строка ниже нужна для запуска на Jenkins не нужна
+        $(byText("Consent")).click();
         registrationPage.checkFormTitle("Student Registration Form")
         .setFirstName(userFirstname)
                 .setLastName(userSurname)
