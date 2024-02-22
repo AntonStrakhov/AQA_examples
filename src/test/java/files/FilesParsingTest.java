@@ -37,7 +37,7 @@ public class FilesParsingTest {
     void xlsParseTest() throws Exception {
         try (InputStream resourceAsStream = cl.getResourceAsStream("example/sample-xlsx-file.xlsx")) {
             XLS content = new XLS(resourceAsStream);
-            assertThat(content.excel.getSheetAt(1000).getRow(1).getCell(1).getStringCellValue()).contains("Dulce");
+            assertThat(content.excel.getSheetAt(0).getRow(1).getCell(1).getStringCellValue()).contains("Dulce");
         }
     }
 
