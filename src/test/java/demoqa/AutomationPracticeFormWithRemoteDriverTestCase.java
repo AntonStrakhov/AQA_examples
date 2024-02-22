@@ -2,10 +2,11 @@ package demoqa;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import demoqa.helpers.Attach;
 import demoqa.pages.RegistrationPage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -14,6 +15,7 @@ import static com.codeborne.selenide.Condition.empty;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static io.qameta.allure.Allure.step;
 
 public class AutomationPracticeFormWithRemoteDriverTestCase{
 
@@ -39,6 +41,19 @@ public class AutomationPracticeFormWithRemoteDriverTestCase{
         Configuration.browserCapabilities = capabilities;
     }
 
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+    }
+
     @Test
     @Tag("remote")
     void fillFormTest() {
@@ -56,13 +71,17 @@ public class AutomationPracticeFormWithRemoteDriverTestCase{
         String city = "Delhi";
         String subject = "Maths";
 
+        step("Open form", () -> {
         registrationPage.openPage();
         //Строка ниже нужна для запуска на Selenoid
         //$(byText("Соглашаюсь")).click();
         //Строка ниже нужна для запуска на Jenkins не нужна
         $(byText("Consent")).click();
-        registrationPage.checkFormTitle("Student Registration Form")
-        .setFirstName(userFirstname)
+        registrationPage.checkFormTitle("Student Registration Form");
+        });
+
+        step("Fill form", () -> {
+        registrationPage.setFirstName(userFirstname)
                 .setLastName(userSurname)
                 .setEmail(userEmail)
                 .setGender(gender)
@@ -73,10 +92,10 @@ public class AutomationPracticeFormWithRemoteDriverTestCase{
                 .setCity(city)
                 .setPicture(imagePath)
                 .setSubject(subject)
-                .submitForm()
-        ;
+                .submitForm();
+        });
 
-
+        step("Verify results", () -> {
         registrationPage.verifyResultsModalAppears()
                 .verifyResult("Student Name", text(userFirstname + " " + userSurname))
                 .verifyResult("Student Email", text(userEmail))
@@ -87,7 +106,7 @@ public class AutomationPracticeFormWithRemoteDriverTestCase{
                 .verifyResult("Subjects", text(subject))
                 .verifyResult("Picture", text(imagePath))
                 .verifyResult("Address", empty)
-                .verifyResult("State and City", text(state + " " + city))
-        ;
+                .verifyResult("State and City", text(state + " " + city));
+        });
     }
 }
