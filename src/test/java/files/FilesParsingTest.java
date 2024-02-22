@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.opencsv.CSVReader;
 import files.model.Glossary;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.InputStream;
@@ -18,6 +19,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Tag("files")
 public class FilesParsingTest {
 
     ClassLoader cl = FilesParsingTest.class.getClassLoader();
@@ -35,7 +37,7 @@ public class FilesParsingTest {
     void xlsParseTest() throws Exception {
         try (InputStream resourceAsStream = cl.getResourceAsStream("example/sample-xlsx-file.xlsx")) {
             XLS content = new XLS(resourceAsStream);
-            assertThat(content.excel.getSheetAt(0).getRow(1).getCell(1).getStringCellValue()).contains("Dulce");
+            assertThat(content.excel.getSheetAt(1000).getRow(1).getCell(1).getStringCellValue()).contains("Dulce");
         }
     }
 

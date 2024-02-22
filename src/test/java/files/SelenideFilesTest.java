@@ -2,6 +2,7 @@ package files;
 
 import com.codeborne.selenide.Condition;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@Tag("files")
 public class SelenideFilesTest {
 
     //Если у кнопки нет атрибута href, скачать такой файл можно через proxy-server

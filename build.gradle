@@ -45,3 +45,9 @@ test {
     systemProperty "chromeoptions.prefs", "intl.accept_languages=ru"
     systemProperties(System.getProperties())
 }
+
+task files_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("files")
+    }
+}
