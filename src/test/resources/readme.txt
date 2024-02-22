@@ -57,3 +57,14 @@ Source - Deploy from branch
 Branch - main / root
 6. Setting - Action - General
 Workflow permisson - read and write
+
+
+****** JENKINS CI
+1. Добавляем Теги к тестовому классу / методам
+2. В build.gradle добавляем блок с задачей (task)
+3. В Jenkins создаем "New Item" - "название" - FreeStyle project
+Source Code Management - GIT - ссылка на репозиторий
+Branches to build - */main (ветка из которой запускаем тесты)
+Build Invoke Gradle Gradle 7.4.1
+Tasks clean files_test (files_test - название задачи в файле build.gradle)
+Post-build Actions - Allure Report - build/allure-results (путь до папки allure-results, можно посмотреть в папке Workspace)
