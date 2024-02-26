@@ -19,6 +19,9 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.assertj.core.api.Assertions.assertThat;
 
+
+//Запуск через терминал gradle clean files_test
+//Запуск через терминал с параметрами gradle clean files_test -Dbrowser=edge
 @Tag("files")
 public class FilesParsingTest {
 
