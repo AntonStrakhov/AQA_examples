@@ -1,0 +1,38 @@
+Telegram username: @aqa_examples_bot
+Telegram token: 7159524290:AAH3KY43rBWSaKlwGsN6bPiphXenXabn4u8
+Chat id: -1001211463428
+
+Fetch bot updates and look for the chat id:
+curl https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/getUpdates | jq .message.chat.id
+curl https://api.telegram.org/bot7159524290:AAH3KY43rBWSaKlwGsN6bPiphXenXabn4u8/getUpdates
+
+Send a message using the HTTP API:
+curl -X POST  -H 'Content-Type: application/json' -d '{"chat_id": "123456789", "text": "This is a test from curl", "disable_notification": true}' https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage
+curl -X POST  -H 'Content-Type: application/json' -d '{"chat_id": "-1001211463428", "text": "This is a test from aqa.examples", "disable_notification": true}' https://api.telegram.org/bot7159524290:AAH3KY43rBWSaKlwGsN6bPiphXenXabn4u8/sendMessage
+
+Run jar with notifications
+java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.2.1.jar
+
+
+Slack
+channel: #qa_guru_17
+bot token: xoxb-1687076169986-4740795293235-tKVUiaaj6EBeSJuZfqcrXXal
+
+
+
+1. Открыть в телеге BotFather
+2. /start
+3. /newbot
+4. Выбрать имя бота
+5. Выбрать имя пользователя бота
+6. Сохраняем токен
+7. Сохраняем имя пользователя бота с собакой@ (@aqa_examples_bot)
+8. Добавить бота по имени к чату и делаем его админом
+9. Вставляем токен в CURL
+10. Пишем любое сообщение в чат и дергаем CURL (можно через браузер)
+11. Из ответа получаем параметр "chat":{"id":-1001211463428,...} и сохраняем его вместе со знаком "-"
+12. Вставляем токен и chat id в Send a message using the HTTP API CURL
+13. Скачиваем allure-notification.jar https://github.com/qa-guru/allure-notifications/releases и добавляем в проект
+14. Создаем файл config.json (его лучше не отправлять в репозиторий, т.к. там указан токен)
+15. При запуске в Jenkins добавить в секцию build первым пунктом файл config.json
+16. И в post build task SCRIPT java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.2.1.jar
