@@ -25,11 +25,14 @@ public class AutomationPracticeFormWithRemoteDriverTestCase{
     static void beforeAll() {
         Configuration.browserSize = "1920x1080";
         Configuration.browser = "chrome";
-        Configuration.browserVersion = "100.0";
+        Configuration.browserVersion = "121.0";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         // для запуска тестов на удаленном сервере селенид
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        //Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        // на локальном сервере Selenoid
+        Configuration.remote = "http://127.0.0.1:8080/wd/hub";
 
         // добавялем опции для запуска браузера в окошке селеноида и запись видео
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -75,8 +78,8 @@ public class AutomationPracticeFormWithRemoteDriverTestCase{
         registrationPage.openPage();
         //Строка ниже нужна для запуска на Selenoid
         //$(byText("Соглашаюсь")).click();
-        //Строка ниже нужна для запуска на Jenkins не нужна
-        $(byText("Consent")).click();
+        //Строка ниже для запуска на Jenkins и локальном Selenoid не нужна
+        //$(byText("Consent")).click();
         registrationPage.checkFormTitle("Student Registration Form");
         });
 
