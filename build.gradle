@@ -32,7 +32,10 @@ dependencies {
             'com.opencsv:opencsv:5.7.1',
             'com.google.code.gson:gson:2.10',
             'com.github.javafaker:javafaker:0.12',
-            'io.qameta.allure:allure-selenide:2.19.0'
+            'io.qameta.allure:allure-selenide:2.19.0',
+            'org.seleniumhq.selenium:selenium-java:3.141.59',
+            'io.github.bonigarcia:webdrivermanager:5.5.3',
+            'org.aeonbits.owner:owner:1.0.4'
     )
 }
 
@@ -73,5 +76,12 @@ task remote_test(type: Test) {
 task simple_test(type: Test) {
     useJUnitPlatform {
         includeTags("simple")
+    }
+}
+
+task web_driver_test(type: Test) {
+    systemProperties(System.getProperties()) //запуск тестов из терминала с параметрами
+    useJUnitPlatform {
+        includeTags("web_driver")
     }
 }

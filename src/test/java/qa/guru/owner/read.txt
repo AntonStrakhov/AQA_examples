@@ -1,0 +1,4 @@
+.\gradlew clean test - запуск тестов
+.\gradlew clean web_driver_test - запуск тестов по тегу
+.\gradlew clean web_driver_test -DbaseUrl=https://github.com -Dbrowser=EDGE - запуск с параметрами
+
