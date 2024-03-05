@@ -1,17 +1,19 @@
 plugins {
     id 'java-library'
     id 'io.qameta.allure' version '2.10.0'
+    id "io.freefair.lombok" version "6.0.0-m2"
 }
+
 
 allure {
     report {
-        version.set("2.19.0")
+        version.set("2.20.1")
     }
     adapter { // отвечает за появление папочки build/allure-results
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
             junit5 { //название фреймворка
-                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+                adapterVersion.set("2.20.1") //версия интеграции фреймворка и Allure
             }
         }
     }
@@ -26,17 +28,19 @@ dependencies {
             "com.codeborne:selenide:6.19.1",
             "org.junit.jupiter:junit-jupiter:5.9.3",
             "org.slf4j:slf4j-simple:2.0.6",
-            "org.assertj:assertj-core:3.23.1",
+            "org.assertj:assertj-core:3.24.2",
             'com.codeborne:pdf-test:1.5.0',
             'com.codeborne:xls-test:1.4.3',
             'com.opencsv:opencsv:5.7.1',
             'com.google.code.gson:gson:2.10',
             'com.github.javafaker:javafaker:0.12',
             'io.qameta.allure:allure-selenide:2.19.0',
+            'io.qameta.allure:allure-rest-assured:2.20.1',
             'org.seleniumhq.selenium:selenium-java:3.141.59',
             'io.github.bonigarcia:webdrivermanager:5.5.3',
             'org.aeonbits.owner:owner:1.0.4',
-            'io.rest-assured:rest-assured:5.3.0'
+            'io.rest-assured:rest-assured:5.3.0',
+            'com.fasterxml.jackson.core:jackson-databind:2.14.2'
     )
 }
 
