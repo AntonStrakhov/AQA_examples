@@ -42,6 +42,8 @@ gradle :allureReport --clean
 
 SelenideLogger.addListener("allure", new AllureSelenide());
 
+Для запуска отчета можно в терминале в директории проекта выполнить команду (\\AQA_examples\build) allure serve allure-results
+
 ****** CI GITHUB
 1. Добавляем в build.gradle
 test {

@@ -5,6 +5,7 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static org.hamcrest.Matchers.containsString;
 import static rest.api.helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import static io.restassured.filter.log.LogDetail.BODY;
@@ -28,6 +29,7 @@ public class LoginSpec {
             .log(BODY)
             .expectStatusCode(200)
             .expectBody("token", notNullValue())
+            .expectBody(containsString("tok"))
             .build();
 
 }
